@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 
   experimental: {
-    // ✅ Correct for Next 15 types
+    // Required for TS compatibility (Next 15)
     turbo: {},
 
     serverActions: {
@@ -18,20 +18,8 @@ const nextConfig: NextConfig = {
     config.resolve = config.resolve ?? {}
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
-
-      // REQUIRED: Payload virtual config
-      '@payload-config': path.resolve(
-        __dirname,
-        'src/payload.config.ts',
-      ),
+      '@payload-config': path.resolve(__dirname, 'src/payload.config.ts'),
     }
-
-    config.resolve.extensionAlias = {
-      '.cjs': ['.cts', '.cjs'],
-      '.js': ['.ts', '.tsx', '.js', '.jsx'],
-      '.mjs': ['.mts', '.mjs'],
-    }
-
     return config
   },
 }
