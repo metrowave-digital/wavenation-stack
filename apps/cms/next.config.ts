@@ -6,13 +6,10 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 
   experimental: {
-    // Required for TS compatibility (Next 15)
-    turbo: {},
-
-    serverActions: {
-      bodySizeLimit: '20mb',
-    },
+  serverActions: {
+    bodySizeLimit: '20mb',
   },
+},
 
   webpack: (config) => {
     config.resolve = config.resolve ?? {}

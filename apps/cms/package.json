@@ -23,7 +23,7 @@
   },
 
   "dependencies": {
-    "next": "15.4.10",
+    "next": "14.2.25",
     "react": "19.2.1",
     "react-dom": "19.2.1",
 
