@@ -1,6 +1,8 @@
 /* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
 /* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
 
+'use server'
+
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
@@ -18,7 +20,6 @@ type Args = {
 }
 
 const serverFunction: ServerFunctionClient = async function (args) {
-  'use server'
   return handleServerFunctions({
     ...args,
     config,
