@@ -28,6 +28,8 @@ const serverFunction: ServerFunctionClient = async function (args) {
 }
 
 const Layout = ({ children }: Args) => (
+  // ✅ TypeScript cannot model async Server Components yet
+  // @ts-expect-error — Payload RootLayout is async by design
   <RootLayout
     config={config}
     importMap={importMap}
