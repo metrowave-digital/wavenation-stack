@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getPayload } from 'payload'
-import config from '../../../../../payload.config'
+import { getPayloadClient } from '@/payload/getPayloadClient'
 
 export async function POST(req: Request) {
   const body = await req.json()
@@ -15,7 +14,7 @@ export async function POST(req: Request) {
     )
   }
 
-  const payload = await getPayload({ config })
+  const payload = await getPayloadClient()
 
   const ip =
     req.headers.get('x-forwarded-for')?.split(',')[0] ||

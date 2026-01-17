@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server'
-import { getPayload } from 'payload'
-import config from '../../../../..//payload.config'
+import { getPayloadClient } from '@/payload/getPayloadClient'
 
 export async function GET() {
-  const payload = await getPayload({ config })
+  const payload = await getPayloadClient()
 
   const now = new Date()
 

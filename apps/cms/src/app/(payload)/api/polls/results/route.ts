@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getPayload } from 'payload'
-import config from '../../../../../payload.config'
+import { getPayloadClient } from '@/payload/getPayloadClient'
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
@@ -13,7 +12,7 @@ export async function GET(req: Request) {
     )
   }
 
-  const payload = await getPayload({ config })
+  const payload = await getPayloadClient()
 
   const votes = await payload.find({
     collection: 'pollVotes',
