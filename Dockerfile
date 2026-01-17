@@ -1,5 +1,5 @@
 # ----------------------------------------
-# Base Image
+# Base
 # ----------------------------------------
 FROM node:20-slim AS base
 WORKDIR /app
@@ -9,39 +9,33 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 # ----------------------------------------
-# Install deps
+# Dependencies (workspace)
 # ----------------------------------------
 FROM base AS deps
-COPY package.json pnpm-lock.yaml ./
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY apps ./apps
+COPY packages ./packages
 RUN pnpm install --frozen-lockfile
 
 # ----------------------------------------
-# Builder stage
+# Build CMS only
 # ----------------------------------------
-FROM base AS builder
+FROM base AS build
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-
-# Install pnpm here again (important)
-RUN corepack enable
-
-# Build Next.js (standalone output)
-RUN pnpm build
+RUN pnpm --filter cms build
 
 # ----------------------------------------
-# Runner (production)
+# Runtime
 # ----------------------------------------
 FROM base AS runner
 WORKDIR /app
-
 ENV NODE_ENV=production
 
-# Copy only what Next needs
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
+COPY --from=build /app/apps/cms/.next/standalone ./
+COPY --from=build /app/apps/cms/.next/static ./apps/cms/.next/static
+COPY --from=build /app/apps/cms/public ./apps/cms/public
 COPY package.json ./
 
 EXPOSE 3000
-
 CMD ["node", "server.js"]
