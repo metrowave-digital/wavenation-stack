@@ -20,5 +20,8 @@
   },
   "dependencies": {
     "lucide-react": "^0.562.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
