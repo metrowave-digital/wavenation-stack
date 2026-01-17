@@ -1,0 +1,14 @@
+.centerRail {
+  grid-area: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  width: 100%;
+  min-width: 0;
+
+  /* 🔒 Critical: prevent overlay bleed */
+  position: relative;
+  isolation: isolate;
+}

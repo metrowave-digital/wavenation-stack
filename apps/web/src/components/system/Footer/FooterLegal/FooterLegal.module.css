@@ -1,0 +1,87 @@
+.legal {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+/* ======================================================
+   Navigation
+====================================================== */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.link {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+/* subtle underline accent */
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-accent);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+/* ======================================================
+   Copyright
+====================================================== */
+
+.copy {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.copy a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.copy a:hover,
+.copy a:focus-visible {
+  text-decoration: underline;
+}
+
+/* ======================================================
+   Accessibility
+====================================================== */
+
+.link:focus-visible,
+.copy a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

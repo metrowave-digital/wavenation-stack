@@ -1,0 +1,179 @@
+/* ======================================================
+   ROOT
+====================================================== */
+
+.root {
+  position: sticky;
+  top: var(--header-height, 72px);
+  z-index: 20;
+
+  background: var(--color-surface);
+
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  backdrop-filter: saturate(120%);
+}
+
+/* ======================================================
+   NAV CONTAINER
+====================================================== */
+
+.nav {
+  position: relative;
+
+  display: flex;
+  gap: 20px;
+
+  padding: 10px 24px;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* Edge fade for horizontal scroll */
+.nav::before,
+.nav::after {
+  content: '';
+  position: sticky;
+  top: 0;
+  width: 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-surface),
+    transparent
+  );
+}
+
+.nav::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--color-surface),
+    transparent
+  );
+}
+
+/* ======================================================
+   LINKS
+====================================================== */
+
+.link {
+  position: relative;
+
+  font-size: 0.8125rem;
+  font-weight: 500;
+
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  text-decoration: none;
+
+  padding-bottom: 6px;
+
+  transition:
+    color 0.2s ease,
+    filter 0.2s ease;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover */
+.link:hover {
+  color: var(--color-text-primary);
+}
+
+/* ======================================================
+   ACTIVE STATE
+====================================================== */
+
+.active {
+  color: var(--color-accent);
+}
+
+/* Underline indicator */
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 2px;
+  border-radius: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--color-electric-blue),
+    var(--color-magenta-pulse)
+  );
+
+  opacity: 0;
+  transform: scaleX(0.6);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Subtle glow for active */
+.active {
+  filter:
+    drop-shadow(0 0 6px rgba(0, 255, 255, 0.25))
+    drop-shadow(0 0 10px rgba(255, 0, 255, 0.15));
+}
+
+/* ======================================================
+   COMPACT HEADER
+====================================================== */
+
+:global(.header--compact) .root {
+  top: 56px;
+}
+
+:global(.header--compact) .nav {
+  padding: 8px 20px;
+}
+
+/* ======================================================
+   MOBILE TUNING
+====================================================== */
+
+@media (max-width: 768px) {
+  .nav {
+    gap: 16px;
+    padding: 8px 16px;
+  }
+
+  .link {
+    font-size: 0.75rem;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .link::after {
+    transition: none;
+  }
+}

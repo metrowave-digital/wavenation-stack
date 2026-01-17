@@ -1,0 +1,149 @@
+.hero {
+  position: relative;
+  background: radial-gradient(
+      1200px 500px at 20% -10%,
+      rgba(0, 170, 255, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 420px at 85% 10%,
+      rgba(168, 85, 247, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #020617 0%,
+      #020617 40%,
+      transparent 100%
+    );
+  padding: 5rem 1.5rem 3.25rem;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(
+    700px 220px at 30% 0%,
+    rgba(255, 255, 255, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.heroTopRow {
+  margin-top: 0.85rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.weekStamp {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.heroMeta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 3.35rem;
+  font-weight: 950;
+  line-height: 1.03;
+  margin: 0.75rem 0 1rem;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  padding: 0.9rem 1.65rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00aaff, #0077cc);
+  color: #000;
+  font-weight: 950;
+  text-decoration: none;
+}
+
+.secondaryCta {
+  padding: 0.9rem 1.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+/* ================= VARIANTS ================= */
+
+.charts {
+  /* Default — electric, data-driven */
+}
+
+.article {
+  background: linear-gradient(
+    180deg,
+    #020617 0%,
+    #020617 55%,
+    transparent 100%
+  );
+}
+
+.tv {
+  background: radial-gradient(
+      900px 400px at 50% -10%,
+      rgba(255, 0, 120, 0.25),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #020617 0%,
+      #020617 45%,
+      transparent 100%
+    );
+}

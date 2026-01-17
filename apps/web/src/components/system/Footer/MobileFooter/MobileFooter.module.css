@@ -1,0 +1,23 @@
+.mobile {
+  display: none;
+}
+
+/* ======================================================
+   Mobile Only
+====================================================== */
+
+@media (max-width: 768px) {
+  .mobile {
+    display: block;
+    margin-top: 20px;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+  }
+
+  .copy {
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+}

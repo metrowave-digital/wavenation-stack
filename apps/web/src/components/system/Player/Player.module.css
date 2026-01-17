@@ -1,0 +1,154 @@
+/* ======================================================
+   PLAYER (PINNED + FROSTED GLASS — SAFARI SAFE)
+====================================================== */
+
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 100;
+
+  width: 100%;
+  height: 72px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+
+  /* 👇 reserve space for progress INSIDE player */
+  padding: 0 16px 6px;
+  padding-bottom: calc(6px + env(safe-area-inset-bottom));
+
+  overflow: visible;
+
+  background-color: rgba(18, 18, 26, 0.92);
+  background-image:
+    radial-gradient(
+      120% 90% at 20% -40%,
+      rgba(140, 120, 255, 0.22),
+      transparent 55%
+    ),
+    linear-gradient(
+      to top,
+      rgba(14, 14, 22, 0.68),
+      rgba(24, 24, 34, 0.58)
+    );
+
+  backdrop-filter: blur(22px) saturate(155%);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 -10px 34px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  isolation: isolate;
+
+  /* 👇 forces Safari to keep children visible */
+  transform: translateZ(0);
+}
+
+/* ======================================================
+   VINYL TEXTURE
+====================================================== */
+
+.texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.018),
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 2px,
+      transparent 5px
+    );
+
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+}
+
+/* ======================================================
+   CONTENT LAYERS
+====================================================== */
+
+.info,
+.controls,
+.actions {
+  position: relative;
+  z-index: 1;
+}
+
+.info {
+  min-width: 0;
+}
+
+/* ======================================================
+   PROGRESS OVERLAY (SAFARI FIXED)
+====================================================== */
+
+.progress {
+  position: absolute;
+
+  left: 8px;
+  right: 8px;
+
+  /* 👇 lift OFF the blur edge */
+  bottom: 2px;
+
+  z-index: 3;
+  pointer-events: auto;
+
+  /* 👇 forces independent paint */
+  transform: translateZ(0);
+}
+
+/* ======================================================
+   HOVER POLISH
+====================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .player:hover {
+    backdrop-filter: blur(26px) saturate(175%);
+    -webkit-backdrop-filter: blur(26px) saturate(175%);
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+  .player {
+    padding: 0 12px 6px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    height: 72px;
+  }
+
+  .progress {
+    left: 6px;
+    right: 6px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .player {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .texture {
+    opacity: 0.14;
+  }
+}

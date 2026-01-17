@@ -1,0 +1,170 @@
+/* ======================================================
+   ROOT (FORCED COMPOSITING LAYER)
+====================================================== */
+
+.root {
+  position: relative;
+  width: 100%;
+  padding: 0 10px 8px;
+
+  pointer-events: auto;
+
+  /* 👇 CRITICAL: forces Safari to render layer */
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+/* ======================================================
+   TIME ROW
+====================================================== */
+
+.timeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+}
+
+.time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ======================================================
+   LIVE BADGE
+====================================================== */
+
+.liveBadge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #ff5c5c;
+  animation: livePulse 1.2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+  0% { opacity: 0.55; }
+  50% { opacity: 1; }
+  100% { opacity: 0.55; }
+}
+
+/* ======================================================
+   TRACK PLATE (SAFARI FIX)
+====================================================== */
+
+.track {
+  position: relative;
+
+  height: 7px;
+  border-radius: 999px;
+
+  /* 👇 REAL BACKING PLATE (NOT TRANSPARENT) */
+  background-color: rgba(32, 32, 46, 0.85);
+
+  /* 👇 progress fill */
+  background-image:
+    linear-gradient(
+      to right,
+      #8c7aff var(--progress),
+      transparent var(--progress)
+    );
+
+  /* 👇 makes Safari respect z-order */
+  transform: translateZ(0);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 3px 8px rgba(0, 0, 0, 0.6);
+
+  overflow: hidden;
+}
+
+/* ======================================================
+   SCRUBBER
+====================================================== */
+
+.scrubber {
+  position: absolute;
+
+  /* 👇 extends hit area without changing visuals */
+  inset: -8px 0;
+
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+.scrubber::-webkit-slider-runnable-track {
+  height: 7px;
+  background: transparent;
+}
+
+.scrubber::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+
+  background: #8c7aff;
+
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.75),
+    0 0 14px rgba(140, 122, 255, 0.8);
+
+  transform: translateY(-4px);
+}
+
+/* ======================================================
+   LIVE MODE
+====================================================== */
+
+.live .track {
+  background-color: rgba(90, 20, 20, 0.85);
+  background-image: none;
+}
+
+.live .track::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 100%
+    );
+
+  animation: liveSweep 1.6s infinite linear;
+}
+
+@keyframes liveSweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* ======================================================
+   MOBILE SAFETY
+====================================================== */
+
+@media (max-width: 768px) {
+  .root {
+    padding-bottom: 6px;
+  }
+
+  .track {
+    height: 6px;
+  }
+
+  .scrubber::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    transform: translateY(-6px);
+  }
+}

@@ -1,0 +1,12 @@
+.root {
+  border-left: 4px solid #0af;
+  padding-left: 1rem;
+  margin: 2.5rem 0;
+  font-style: italic;
+}
+
+.root cite {
+  display: block;
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}

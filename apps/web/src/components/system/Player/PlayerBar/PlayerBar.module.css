@@ -1,0 +1,68 @@
+/* ======================================================
+   PLAYER BAR (STICKY)
+====================================================== */
+
+.bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 60;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.6rem 0.85rem;
+
+  background: linear-gradient(
+    to top,
+    rgba(8, 8, 12, 0.98),
+    rgba(12, 12, 18, 0.92)
+  );
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Subtle lift when expanded */
+.bar[data-expanded='true'] {
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 768px) {
+  .bar {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+    padding: 0.55rem 0.65rem;
+  }
+}
+
+/* ======================================================
+   INTERACTION STATES
+====================================================== */
+
+.bar :focus-visible {
+  outline: 2px solid rgba(120, 180, 255, 0.75);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Optional hover polish (desktop only) */
+@media (hover: hover) {
+  .bar:hover {
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 16, 0.98),
+      rgba(14, 14, 22, 0.95)
+    );
+  }
+}

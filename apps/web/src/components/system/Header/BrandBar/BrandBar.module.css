@@ -1,0 +1,152 @@
+/* ======================================================
+   WRAPPER
+====================================================== */
+
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+}
+
+/* ======================================================
+   BRAND LINK
+====================================================== */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+
+  height: 100%;
+  padding-right: 4px;
+
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    filter 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ✨ Glow on hover (no underline) */
+.root:hover {
+  filter:
+    drop-shadow(0 0 6px rgba(0, 255, 255, 0.35))
+    drop-shadow(0 0 12px rgba(255, 0, 255, 0.25));
+}
+
+/* Keyboard accessibility */
+.root:focus-visible {
+  outline: none;
+  filter:
+    drop-shadow(0 0 6px rgba(0, 255, 255, 0.45))
+    drop-shadow(0 0 14px rgba(255, 0, 255, 0.35));
+}
+
+/* ======================================================
+   BRAND LOCKUP
+====================================================== */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+}
+
+/* ======================================================
+   SIGNAL / BARCODE BARS
+====================================================== */
+
+.signal {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  height: 22px;
+  padding-left: 10px;
+
+  pointer-events: none; /* critical */
+}
+
+.signal span {
+  width: 3px;
+  height: 100%;
+
+  background: linear-gradient(
+    180deg,
+    var(--color-electric-blue),
+    var(--color-magenta-pulse)
+  );
+
+  opacity: 0.75;
+  transform-origin: bottom;
+  animation: pulse 3.5s ease-in-out infinite;
+}
+
+.signal span:nth-child(odd) {
+  opacity: 0.4;
+}
+
+.signal span:nth-child(3n) {
+  opacity: 0.6;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.6);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* ======================================================
+   COMPACT HEADER BEHAVIOR
+====================================================== */
+
+:global(.header--compact) .tagline {
+  display: none;
+}
+
+:global(.header--compact) .signal {
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* ======================================================
+   REDUCED MOTION (IMPORTANT)
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .signal span {
+    animation: none;
+  }
+
+  .root {
+    transition: none;
+  }
+}

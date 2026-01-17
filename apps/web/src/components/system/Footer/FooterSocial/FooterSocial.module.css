@@ -1,0 +1,61 @@
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ======================================================
+   Heading
+====================================================== */
+
+.heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+/* ======================================================
+   Social Links
+====================================================== */
+
+.socialLinks {
+  display: flex;
+  gap: 14px;
+}
+
+/* ======================================================
+   Icon Links
+====================================================== */
+
+.link {
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ======================================================
+   Reduced Motion
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: color 0.2s ease;
+    transform: none;
+  }
+}

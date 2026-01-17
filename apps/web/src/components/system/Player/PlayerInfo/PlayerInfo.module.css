@@ -1,0 +1,103 @@
+/* ======================================================
+   STICKY PLAYER INFO
+====================================================== */
+
+.stickyDesktop {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: #0b0b0f;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.artwork {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a22;
+  flex-shrink: 0;
+}
+
+.artworkSkeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    #1a1a22 8%,
+    #242436 18%,
+    #1a1a22 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 0.5rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.track {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-size: 0.75rem;
+  color: #a1a1b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.soundBars {
+  grid-row: span 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.soundBars span {
+  width: 2px;
+  height: 6px;
+  background: #6b6bff;
+  opacity: 0.4;
+}
+
+.playing span:nth-child(1) {
+  animation: bar 0.8s infinite ease-in-out;
+}
+.playing span:nth-child(2) {
+  animation: bar 0.8s infinite ease-in-out 0.15s;
+}
+.playing span:nth-child(3) {
+  animation: bar 0.8s infinite ease-in-out 0.3s;
+}
+
+@keyframes bar {
+  0% { height: 4px; }
+  50% { height: 14px; }
+  100% { height: 4px; }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

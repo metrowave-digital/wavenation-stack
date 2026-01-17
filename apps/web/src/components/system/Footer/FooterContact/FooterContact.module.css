@@ -1,0 +1,79 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 260px;
+}
+
+/* ======================================================
+   Heading
+====================================================== */
+
+.heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+/* ======================================================
+   Email Line
+====================================================== */
+
+.line {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.email {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+
+.email::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.4;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.email:hover::after,
+.email:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.email:hover,
+.email:focus-visible {
+  color: var(--color-accent);
+  outline: none;
+}
+
+/* ======================================================
+   Subtext
+====================================================== */
+
+.subtext {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+/* ======================================================
+   Accessibility
+====================================================== */
+
+.email:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

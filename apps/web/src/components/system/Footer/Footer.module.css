@@ -1,0 +1,35 @@
+.root {
+  background: #050507;
+  color: var(--color-text-primary);
+
+  /* ↓ slightly tighter top */
+  padding: 48px 24px 32px;
+
+  /* 👇 reserve space for fixed player */
+  margin-bottom: 72px;
+}
+
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+  .root {
+    padding: 40px 20px 28px;
+    margin-bottom: 72px; /* same as player height */
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

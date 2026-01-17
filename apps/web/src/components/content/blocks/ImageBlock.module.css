@@ -1,0 +1,23 @@
+.standard {
+  margin: 2rem 0;
+}
+
+.full {
+  margin: 3rem -20vw;
+}
+
+.figure {
+  width: 100%;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure figcaption {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}

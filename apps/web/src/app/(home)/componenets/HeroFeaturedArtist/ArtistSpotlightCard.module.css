@@ -1,0 +1,216 @@
+/* ======================================================
+   BILLBOARD CARD
+====================================================== */
+
+.billboard {
+  position: relative;
+  display: block;
+  height: 220px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .billboard:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* ======================================================
+   IMAGE
+====================================================== */
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.image {
+  object-fit: cover;
+  object-position: top center;
+  filter: brightness(0.55) contrast(1.05) saturate(1.05);
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .billboard:hover .image {
+    filter: brightness(0.75) contrast(1.05) saturate(1.1);
+    transform: scale(1.04);
+  }
+}
+
+/* ======================================================
+   OVERLAY
+====================================================== */
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.45) 55%,
+    rgba(0, 0, 0, 0.18)
+  );
+}
+
+/* ======================================================
+   CONTENT
+====================================================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  /* 🔑 IMPORTANT: visible by default */
+  opacity: 1;
+  transform: translateY(0);
+
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .billboard:hover .content {
+    transform: translateY(-2px);
+  }
+}
+
+/* ======================================================
+   TEXT
+====================================================== */
+
+.kicker {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.name {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+.explore {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #7dd3fc;
+  margin-top: 0.25rem;
+  opacity: 0.9;
+}
+
+/* ======================================================
+   SKELETON
+====================================================== */
+
+.skeleton {
+  pointer-events: none;
+}
+
+.skelImage {
+  position: absolute;
+  inset: 0;
+  background: #111;
+}
+
+.skelOverlay {
+  position: absolute;
+  inset: 0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.skelKicker {
+  width: 120px;
+  height: 8px;
+  border-radius: 4px;
+  background: #1b1f2a;
+}
+
+.skelName {
+  width: 70%;
+  height: 28px;
+  border-radius: 8px;
+  background: #1b1f2a;
+}
+
+/* ======================================================
+   MOBILE (≤768px)
+====================================================== */
+
+@media (max-width: 768px) {
+  .billboard {
+    height: 260px;
+    border-radius: 18px;
+    transform: none !important;
+  }
+
+  .overlay {
+    padding: 1.25rem;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92),
+      rgba(0, 0, 0, 0.5) 55%,
+      rgba(0, 0, 0, 0.22)
+    );
+  }
+
+  .name {
+    font-size: clamp(1.4rem, 5vw, 1.7rem);
+  }
+
+  .content {
+    transform: none;
+  }
+}
+
+/* ======================================================
+   TABLET (769–1024px)
+====================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .billboard {
+    height: 240px;
+    border-radius: 20px;
+  }
+
+  .overlay {
+    padding: 1.4rem;
+  }
+
+  .name {
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION (CSS-MODULE SAFE)
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .billboard,
+  .billboard *,
+  .billboard *::before,
+  .billboard *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

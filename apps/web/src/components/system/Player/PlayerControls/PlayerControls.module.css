@@ -1,0 +1,170 @@
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  /* ✅ Creates safe stacking context for popovers */
+  position: relative;
+  z-index: 2;
+}
+
+/* ----------------------------------------
+   Control Button
+----------------------------------------- */
+
+.controlButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.controlButton:active {
+  transform: scale(0.95);
+}
+
+.controlButton:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-bg),
+    0 0 0 4px var(--color-accent);
+}
+
+.controlButton[aria-pressed='true'] {
+  color: var(--color-accent);
+}
+
+/* ----------------------------------------
+   Volume Popover (FROSTED SAFE)
+----------------------------------------- */
+
+.volumeWrap {
+  position: relative;
+
+  /* ✅ Prevents parent blur from clipping */
+  isolation: isolate;
+}
+
+.volumePopover {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  transform-origin: bottom center;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 10px;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(28, 28, 34, 0.95),
+      rgba(18, 18, 22, 0.9)
+    );
+
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  z-index: 160;
+
+  /* ✅ Smooth open */
+  opacity: 0;
+  pointer-events: none;
+  animation: volumeIn 0.18s ease forwards;
+}
+
+/* Optional arrow (nice polish) */
+.volumePopover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 10px;
+  height: 6px;
+
+  background: rgba(18, 18, 22, 0.9);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+/* ----------------------------------------
+   Slider
+----------------------------------------- */
+
+.volumeSlider {
+  width: 90px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.volumeValue {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ----------------------------------------
+   Motion
+----------------------------------------- */
+
+@keyframes volumeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+/* ----------------------------------------
+   Mobile Responsiveness
+----------------------------------------- */
+
+@media (max-width: 480px) {
+  .controls {
+    gap: 8px;
+  }
+
+  .controlButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .volumeSlider {
+    width: 70px;
+  }
+
+  .volumePopover {
+    bottom: calc(100% + 12px);
+  }
+}

@@ -1,0 +1,238 @@
+/* =========================
+   CARD BASE
+========================= */
+
+.card {
+  background: #0f1115;
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.card {
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.live {
+  border: 1px solid rgba(96, 165, 250, 0.35);
+}
+
+.upNext {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.logoWrap {
+  flex-shrink: 0;
+}
+
+.logo {
+  border-radius: 10px;
+}
+
+.logoFallback {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  background: #1b1f2a;
+}
+
+/* =========================
+   META
+========================= */
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.time {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.countdown {
+  font-size: 0.7rem;
+  color: #60a5fa;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.primaryButton {
+  margin-top: 0.5rem ;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryButton:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+  }
+}
+
+/* =========================
+   SKELETON
+========================= */
+
+.skeleton {
+  overflow: hidden;
+}
+
+.skelStatus {
+  width: 48px;
+  height: 8px;
+  border-radius: 4px;
+  background: #1b1f2a;
+}
+
+.skelLogo {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  background: #1b1f2a;
+}
+
+.skelMeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skelLine {
+  height: 12px;
+  width: 70%;
+  border-radius: 6px;
+  background: #1b1f2a;
+}
+
+.skelLineShort {
+  height: 10px;
+  width: 45%;
+  border-radius: 6px;
+  background: #1b1f2a;
+}
+
+.skelButton {
+  height: 32px;
+  border-radius: 999px;
+  background: #1b1f2a;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1.4rem;
+    gap: 1.1rem;
+    border-radius: 18px;
+  }
+
+  .header {
+    gap: 1rem;
+  }
+
+  .logo,
+  .logoFallback {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .time {
+    font-size: 0.78rem;
+  }
+
+  .countdown {
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+  }
+
+  .primaryButton {
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    padding: 1.3rem;
+    gap: 1rem;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .time {
+    font-size: 0.75rem;
+  }
+
+  .primaryButton {
+    font-size: 0.75rem;
+    padding: 0.65rem 1.1rem;
+  }
+}
+
+/* ===============================
+   REDUCED MOTION (CSS-MODULE SAFE)
+=============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card *,
+  .card *::before,
+  .card *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.card {
+  justify-content: flex-start;
+}

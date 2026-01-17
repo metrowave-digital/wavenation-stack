@@ -1,0 +1,197 @@
+.page {
+  max-width: 100%;
+}
+
+/* ================= POWERED ================= */
+
+.poweredBy {
+  margin: 1rem auto 2.5rem;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.poweredBy a {
+  color: #7dd3fc;
+  text-decoration: none;
+}
+
+/* ================= ADS ================= */
+
+.adSlot {
+  margin: 2.75rem auto;
+  max-width: 1100px;
+  padding: 1.25rem;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,0.2);
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* ================= WEEK SELECTOR ================= */
+
+.weekSelector {
+  max-width: 1100px;
+  margin: 1.5rem auto 2rem;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.weekSelector select {
+  background: #020617;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+}
+
+/* ================= INSIGHTS ================= */
+
+.insights {
+  max-width: 1100px;
+  margin: 0 auto 2.25rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.comparing {
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+
+.insightCard {
+  padding: 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+}
+
+.insightCard span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.insightCard strong {
+  display: block;
+  font-weight: 900;
+}
+
+.insightCard em {
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ================= CHART ================= */
+
+.chart {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+}
+
+.chartHeaderRow,
+.chartRow {
+  display: grid;
+  grid-template-columns: 80px 1.5fr 1.2fr 90px;
+  padding: 0.9rem 1.1rem;
+}
+
+.chartHeaderRow {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.chartRow {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.rank {
+  font-weight: 900;
+}
+
+.track {
+  font-weight: 600;
+}
+
+.artist {
+  opacity: 0.75;
+}
+
+/* ================= MOVEMENT ================= */
+
+.movement {
+  font-weight: 900;
+  text-align: right;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.up {
+  color: #22c55e;
+  animation: rise 0.4s ease;
+}
+
+.down {
+  color: #ef4444;
+  animation: drop 0.4s ease;
+}
+
+.new {
+  color: #38bdf8;
+}
+
+@keyframes rise {
+  from { transform: translateY(6px); }
+  to { transform: translateY(0); }
+}
+
+@keyframes drop {
+  from { transform: translateY(-6px); }
+  to { transform: translateY(0); }
+}
+
+/* ================= DROPPED ================= */
+
+.dropped {
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+  opacity: 0.85;
+}
+
+.dropped h3 {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.dropped ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dropped li {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.compareNote {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.65rem;
+  opacity: 0.55;
+  letter-spacing: 0.06em;
+}

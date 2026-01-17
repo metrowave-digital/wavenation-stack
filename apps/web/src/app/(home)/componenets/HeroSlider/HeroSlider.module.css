@@ -1,0 +1,362 @@
+/* ======================================================
+   ROOT
+====================================================== */
+
+.root {
+  position: relative;
+
+  /* 🔑 FIX: DO NOT collapse absolute children */
+  min-height: 560px;
+
+  border-radius: 18px;
+  overflow: hidden;
+  background: #07070a;
+  touch-action: pan-y;
+  user-select: none;
+  isolation: isolate;
+  contain: layout paint; /* 👈 add */
+}
+
+
+@media (max-width: 768px) {
+  .root {
+    min-height: 420px;
+    border-radius: 14px;
+  }
+}
+
+/* ======================================================
+   STAGE BACKGROUND (prevents black flash)
+====================================================== */
+
+.stageBg {
+  position: absolute;
+  inset: 0;
+  background: #07070a;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ======================================================
+   SLIDE
+====================================================== */
+
+.slide {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ======================================================
+   IMAGE + KEN BURNS + CROSSFADE
+====================================================== */
+
+.imageMotion {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageFallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, #1c1c24, #07070a);
+}
+
+/* ======================================================
+   OVERLAY
+====================================================== */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.86),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.06)
+  );
+}
+
+.overlay,
+.stageBg {
+  pointer-events: none;
+}
+
+/* ======================================================
+   CATEGORY PILL (TOP RIGHT)
+====================================================== */
+
+.categoryTopRight {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .categoryTopRight {
+    top: 0.85rem;
+    right: 0.85rem;
+  }
+}
+
+.categoryPill {
+  padding: 6px 12px;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  color: var(--neon-green, #00ff9c);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+/* ======================================================
+   CONTENT
+====================================================== */
+
+.content {
+  position: absolute;
+  z-index: 2;
+  bottom: 3rem;
+  left: 3rem;
+  right: 3rem;
+  max-width: 680px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .content {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 2rem;
+  }
+}
+
+/* ======================================================
+   TITLE & SUBTITLE (SHARED WIDTH)
+====================================================== */
+
+.title {
+  font-size: 2.1rem;
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.65rem 0;
+  text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.6rem;
+    line-height: 1.22;
+    margin-bottom: 0.55rem;
+  }
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.15rem 0;
+  max-width: 100%;
+}
+
+/* ======================================================
+   CTA
+====================================================== */
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding-bottom: 4px;
+  opacity: 0.9;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.cta:hover {
+  opacity: 1;
+  transform: translateX(4px);
+  text-shadow: 0 0 8px rgba(0, 255, 156, 0.35);
+}
+
+.cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--neon-green, #00ff9c);
+  transform: scaleX(0.6);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.cta:hover::after {
+  transform: scaleX(1);
+}
+
+/* ======================================================
+   PROGRESS BAR
+====================================================== */
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.14);
+  z-index: 3;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--electric-blue, #4da3ff),
+    var(--neon-green, #00ff9c)
+  );
+  transition: width 0.1s linear;
+}
+
+/* ======================================================
+   FALLBACK
+====================================================== */
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ======================================================
+   SKELETON LOADER
+====================================================== */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: #07070a;
+  overflow: hidden;
+}
+
+.skeletonImage {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, #1c1c24, #07070a);
+}
+
+.skeletonOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.86),
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.12)
+  );
+}
+
+.skeletonContent {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3rem;
+  max-width: 680px;
+}
+
+@media (max-width: 768px) {
+  .skeletonContent {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 2rem;
+  }
+}
+
+.skeletonPill,
+.skeletonH1,
+.skeletonH2,
+.skeletonCta {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.9rem;
+}
+
+.skeletonPill {
+  width: 140px;
+  height: 26px;
+  border-radius: 999px;
+}
+
+.skeletonH1 {
+  width: min(620px, 100%);
+  height: 44px;
+  border-radius: 12px;
+}
+
+.skeletonH2 {
+  width: min(520px, 92%);
+  height: 28px;
+  border-radius: 12px;
+}
+
+.skeletonCta {
+  width: 170px;
+  height: 18px;
+  border-radius: 10px;
+}
+
+.skeletonPill::after,
+.skeletonH1::after,
+.skeletonH2::after,
+.skeletonCta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-30%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.14),
+    transparent
+  );
+  animation: shimmer 1.2s ease-in-out infinite;
+}

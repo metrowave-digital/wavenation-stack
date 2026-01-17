@@ -1,0 +1,67 @@
+.brand {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: default;
+  outline: none;
+}
+
+/* ======================================================
+   Brand Title
+====================================================== */
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+/* ======================================================
+   Tagline
+====================================================== */
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.tagline span {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* ======================================================
+   Mission Line
+====================================================== */
+
+.mission {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+/* ======================================================
+   Interaction States
+====================================================== */
+
+.brand:hover .title,
+.brand:focus-visible .title {
+  text-shadow: 0 0 12px color-mix(
+    in srgb,
+    var(--color-accent) 40%,
+    transparent
+  );
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}

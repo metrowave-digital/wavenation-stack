@@ -1,0 +1,36 @@
+.leftRail {
+  position: sticky;
+  top: 88px; /* below header / brand bar */
+  align-self: flex-start;
+
+  width: 100%;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: calc(100vh - 96px);
+}
+
+/* ===============================
+   TABLET
+=============================== */
+@media (max-width: 1024px) {
+  .leftRail {
+    position: relative;
+    top: auto;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+/* ===============================
+   MOBILE
+=============================== */
+@media (max-width: 768px) {
+  .leftRail {
+    position: relative;
+    height: auto;
+    max-width: 100%;
+  }
+}

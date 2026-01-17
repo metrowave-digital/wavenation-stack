@@ -1,0 +1,230 @@
+/* ======================================================
+   BACKDROP
+====================================================== */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/* ======================================================
+   BOTTOM SHEET
+====================================================== */
+
+.sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 92vh;
+  background: #0b0b0f;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 0.75rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ======================================================
+   HANDLE / HEADER
+====================================================== */
+
+.handleRow {
+  position: relative;
+  padding-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: #333;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: -4px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.25rem;
+}
+
+/* ======================================================
+   NOW PLAYING
+====================================================== */
+
+.nowRow {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.artwork {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1a1a22;
+  flex-shrink: 0;
+}
+
+.artworkSkeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    #1a1a22 8%,
+    #242436 18%,
+    #1a1a22 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.track {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.artist {
+  font-size: 0.875rem;
+  color: #a1a1b3;
+  margin-bottom: 0.5rem;
+}
+
+/* ======================================================
+   SHOW CARD
+====================================================== */
+
+.showCard {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #141420;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.showArt {
+  width: 44px;
+  height: 44px;
+  background: #1a1a22;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.showImage {
+  border-radius: 8px;
+}
+
+.showMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.showTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.showHosts,
+.showTime {
+  font-size: 0.75rem;
+  color: #a1a1b3;
+}
+
+/* ======================================================
+   RECENT TRACKS
+====================================================== */
+
+.sectionTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #777;
+  margin: 1rem 0 0.5rem;
+}
+
+.recent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recentItem {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #1c1c28;
+}
+
+.recentTrack {
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+.recentArtist {
+  font-size: 0.75rem;
+  color: #a1a1b3;
+}
+
+.empty {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* ======================================================
+   SOUND BARS
+====================================================== */
+
+.soundBars {
+  display: flex;
+  gap: 3px;
+  height: 14px;
+}
+
+.soundBars span {
+  width: 2px;
+  background: #6b6bff;
+  opacity: 0.4;
+}
+
+.playing span:nth-child(1) {
+  animation: bar 0.8s infinite ease-in-out;
+}
+.playing span:nth-child(2) {
+  animation: bar 0.8s infinite ease-in-out 0.15s;
+}
+.playing span:nth-child(3) {
+  animation: bar 0.8s infinite ease-in-out 0.3s;
+}
+
+@keyframes bar {
+  0% { height: 4px; }
+  50% { height: 14px; }
+  100% { height: 4px; }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,268 @@
+/* ======================================================
+   WaveNation Global Styles
+   Dark-first • Accessible • Media-safe
+====================================================== */
+
+/* ------------------------------
+   CSS Variables (Minimal – Tokens live in UI)
+------------------------------ */
+
+/* ======================================================
+   WaveNation Global Styles
+   Dark-first • Dark-always • Media-safe
+====================================================== */
+
+:root {
+  /* Locked dark defaults */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  /* System helpers */
+  --focus-ring: #4da3ff;
+  --selection-bg: rgba(77, 163, 255, 0.25);
+  --selection-text: #ffffff;
+}
+
+/* ======================================================
+   Global Reset (Turbopack-safe)
+====================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ======================================================
+   Skeleton Animation (global)
+====================================================== */
+
+@keyframes skeletonShimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ------------------------------------------------------
+   NO light-mode override by design
+   WaveNation is dark-only
+------------------------------------------------------ */
+
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+
+  /* Enforce dark UI chrome everywhere */
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+
+  background-color: #0a0a0a !important;
+  color: #ededed;
+
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ------------------------------
+   Typography Defaults
+------------------------------ */
+
+p,
+span,
+li,
+blockquote {
+  line-height: 1.6;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+/* ------------------------------
+   Links
+------------------------------ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   Media Elements
+------------------------------ */
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+audio {
+  width: 100%;
+}
+
+/* Prevent image drag ghosting */
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ------------------------------
+   Form Elements
+------------------------------ */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ------------------------------
+   Focus & Accessibility
+------------------------------ */
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------
+   Text Selection
+------------------------------ */
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+/* ------------------------------
+   Lists
+------------------------------ */
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ------------------------------
+   Tables (Editorial-safe)
+------------------------------ */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+}
+
+/* ------------------------------
+   Scroll Behavior
+------------------------------ */
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* ======================================================
+   Scrollbar Styling — WaveNation
+   Subtle neon • Dark-first • Accessible
+====================================================== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(77, 163, 255, 0.6) rgba(255, 255, 255, 0.04);
+}
+
+/* WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(77, 163, 255, 0.85),
+    rgba(77, 163, 255, 0.45)
+  );
+  border-radius: 999px;
+  border: 2px solid rgba(10, 10, 10, 0.9);
+}
+
+/* Hover — slightly brighter, never flashy */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(77, 163, 255, 1),
+    rgba(77, 163, 255, 0.65)
+  );
+}
+
+/* Active drag */
+::-webkit-scrollbar-thumb:active {
+  background: rgba(77, 163, 255, 1);
+}
+
+/* Corner (for dual-axis scroll areas) */
+::-webkit-scrollbar-corner {
+  background: rgba(10, 10, 10, 0.95);
+}

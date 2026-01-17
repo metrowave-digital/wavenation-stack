@@ -1,0 +1,222 @@
+/* ===============================
+   ROOT
+=============================== */
+
+.root {
+  width: 100%;
+  padding: 1.25rem 0 0.75rem;
+}
+
+/* ===============================
+   HEADER
+=============================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.more {
+  font-size: 0.7rem;
+  color: #7dd3fc;
+  text-decoration: none;
+}
+
+/* ===============================
+   GRID
+=============================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+/* ===============================
+   CARD
+=============================== */
+
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #06070b;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* ===============================
+   IMAGE
+=============================== */
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #05060a;
+}
+
+.image {
+  object-fit: cover;
+  object-position: top center;
+  filter: brightness(0.9) contrast(1.05);
+  transition: transform 0.6s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .image {
+    transform: scale(1.05);
+  }
+}
+
+/* ===============================
+   OVERLAY
+=============================== */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem 1.1rem 1.15rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.25) 55%,
+    transparent
+  );
+}
+
+.category {
+  font-size: 0.55rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #00ff9c;
+  margin-bottom: 0.35rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; /* ✅ standard property */
+
+  overflow: hidden;
+}
+
+
+/* ===============================
+   SKELETON
+=============================== */
+
+.skeleton {
+  pointer-events: none;
+}
+
+.skelImage {
+  aspect-ratio: 16 / 9;
+  background: #0c0f18;
+  position: relative;
+  overflow: hidden;
+}
+
+.skelOverlay {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.skelTag {
+  width: 90px;
+  height: 7px;
+  border-radius: 999px;
+  background: #1b1f2a;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.skelTitle {
+  width: 85%;
+  height: 14px;
+  border-radius: 10px;
+  background: #1b1f2a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===============================
+   SHIMMER
+=============================== */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-40%);
+  }
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+.skelImage::after,
+.skelTag::after,
+.skelTitle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  transform: translateX(-40%);
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+}
+
+/* ===============================
+   REDUCED MOTION
+=============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .root *,
+  .root *::before,
+  .root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

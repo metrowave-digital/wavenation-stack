@@ -1,0 +1,95 @@
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+/* ======================================================
+   Section
+====================================================== */
+
+.section {
+  min-width: 120px;
+}
+
+.heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ======================================================
+   List
+====================================================== */
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 8px;
+}
+
+/* ======================================================
+   Links
+====================================================== */
+
+.link {
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  position: relative;
+}
+
+/* subtle accent underline */
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-accent);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+/* ======================================================
+   Responsive
+====================================================== */
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+/* ======================================================
+   Accessibility
+====================================================== */
+
+.link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

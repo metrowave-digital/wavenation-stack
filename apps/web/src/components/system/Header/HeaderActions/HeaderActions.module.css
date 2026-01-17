@@ -1,0 +1,101 @@
+/* ======================================================
+   ACTIONS WRAPPER
+====================================================== */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ======================================================
+   BASE BUTTON & LINK (EXCLUDE MOBILE BUTTON)
+====================================================== */
+
+.actions button:not(.mobileOnly),
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Icon sizing */
+.actions svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+/* Hover / active */
+.actions button:not(.mobileOnly):hover,
+.actions a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-accent);
+}
+
+.actions button:not(.mobileOnly):active,
+.actions a:active {
+  transform: scale(0.95);
+}
+
+/* Keyboard focus */
+.actions button:not(.mobileOnly):focus-visible,
+.actions a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ======================================================
+   MOBILE-ONLY HAMBURGER (DESKTOP DEFAULT)
+====================================================== */
+
+.mobileOnly {
+  display: none; /* GUARANTEED hidden on desktop */
+}
+
+/* ======================================================
+   COMPACT HEADER ADJUSTMENTS
+====================================================== */
+
+:global(.header--compact) .actions button:not(.mobileOnly),
+:global(.header--compact) .actions a {
+  width: 32px;
+  height: 32px;
+}
+
+/* ======================================================
+   MOBILE BREAKPOINT
+====================================================== */
+
+@media (max-width: 1024px) {
+  /* Hide desktop actions */
+  .actions > button:not(.mobileOnly),
+  .actions > a {
+    display: none;
+  }
+
+  /* Show hamburger ONLY on mobile */
+  .actions > .mobileOnly {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+  }
+}

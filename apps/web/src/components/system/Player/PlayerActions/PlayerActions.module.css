@@ -1,0 +1,56 @@
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ----------------------------------------
+   Action Button
+----------------------------------------- */
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Hover / Active */
+
+.actionButton:hover {
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.actionButton:active {
+  transform: scale(0.95);
+}
+
+/* Focus accessibility */
+
+.actionButton:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-bg),
+    0 0 0 4px var(--color-accent);
+}
+
+/* Disabled (future-proofing) */
+
+.actionButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

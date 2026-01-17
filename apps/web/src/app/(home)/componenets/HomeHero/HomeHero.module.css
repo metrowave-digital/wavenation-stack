@@ -1,0 +1,60 @@
+/* ===============================
+   ROOT — PAGE GUTTERS
+=============================== */
+
+.root {
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  padding-left: clamp(1rem, 3vw, 2rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
+}
+
+/* ===============================
+   DESKTOP GRID (≥1025px)
+   [Left][Center][Right]
+=============================== */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 340px;
+  gap: 1.25rem;
+
+  align-items: start;
+  min-width: 0;
+
+  grid-template-areas: 'left center right';
+}
+
+/* ===============================
+   TABLET (769–1024px)
+   Center → Left → Right
+=============================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    grid-template-areas:
+      'center'
+      'left'
+      'right';
+  }
+}
+
+/* ===============================
+   MOBILE (≤768px)
+=============================== */
+
+@media (max-width: 768px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    grid-template-areas:
+      'center'
+      'left'
+      'right';
+  }
+}

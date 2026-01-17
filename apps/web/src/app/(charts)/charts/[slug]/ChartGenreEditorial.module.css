@@ -1,0 +1,396 @@
+/* ======================================================
+   WaveNation • Chart Genre Editorial
+   Dark-first • Premium editorial • Broadcast-safe
+====================================================== */
+
+.page {
+  min-height: 100%;
+  padding-bottom: 6rem;
+}
+
+/* ================= CURRENT ================= */
+
+.current {
+  max-width: 1120px;
+  margin: 3.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.currentHeader {
+  padding: 1.25rem 0 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.currentTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.currentTitleRow h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.currentMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.week {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.updatedPill {
+  font-size: 0.78rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ================= TOP THREE ================= */
+
+.topThree {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.previewCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0.9rem;
+}
+
+.previewRank {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.previewBody {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.previewAccent {
+  position: absolute;
+  inset: -40% -40% auto auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(77,163,255,0.22), transparent 60%);
+  filter: blur(6px);
+}
+
+.track {
+  font-weight: 600;
+}
+
+.artist {
+  opacity: 0.75;
+}
+
+/* ================= FULL CHART ================= */
+
+.fullChartWrap {
+  margin-top: 1.75rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+
+.chartHeaderRow,
+.chartRow {
+  display: grid;
+  grid-template-columns: 80px 110px 1.25fr 1fr;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+}
+
+.chartHeaderRow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  opacity: 0.65;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.chartRow {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.rank {
+  font-weight: 800;
+}
+
+.movement {
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+}
+
+/* ================= ADS ================= */
+
+.adSlot,
+.adSlotInline {
+  margin: 2.25rem 0;
+  padding: 1.4rem;
+  border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+}
+
+.adLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+/* ================= MOVEMENT ================= */
+
+.history {
+  max-width: 1120px;
+  margin: 3.25rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.movementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1rem;
+}
+
+.movementPanel {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+
+.movementPanelHeader {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.li {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.liTrack {
+  font-weight: 650;
+}
+
+.liSep {
+  opacity: 0.55;
+  padding: 0 0.35rem;
+}
+
+.liArtist {
+  opacity: 0.75;
+}
+
+/* ================= SNAPSHOT ================= */
+
+.snapshot {
+  max-width: 1120px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.snapshotHeader {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.snapshotGrid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: 0.75rem;
+}
+
+.snapshotWeek {
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  padding: 0.85rem;
+}
+
+.snapshotWeek h4 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.snapshotItem {
+  font-size: 0.85rem;
+}
+
+/* ================= TOP WEEKS ================= */
+
+.topWeeks {
+  max-width: 1120px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.topWeeksHeader {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.topWeeksGrid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 1rem;
+}
+
+.topWeekColumn {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  padding: 1rem;
+}
+
+.topWeekItem {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+}
+
+.topWeekRank {
+  font-weight: 800;
+}
+
+/* ================= ARCHIVE ================= */
+
+.archive {
+  max-width: 1120px;
+  margin: 3.25rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.archiveLink {
+  display: inline-flex;
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 980px) {
+  .topThree {
+    grid-template-columns: 1fr;
+  }
+
+  .snapshotGrid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .topWeeksGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .movementGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= HERO META ================= */
+
+.heroMeta {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  /* pushes it slightly into the hero */
+  position: relative;
+  top: 1.6rem;
+
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  justify-content: flex-end;
+}
+
+
+.heroMeta {
+  animation: heroMetaFade 420ms ease-out both;
+}
+
+@keyframes heroMetaFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 0.7;
+    transform: none;
+  }
+}
+
+.heroMetaLabel {
+  opacity: 0.75;
+}
+
+.heroMetaLink {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+}
+
+.heroMetaLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.heroMetaLink:hover::after {
+  opacity: 1;
+}
+

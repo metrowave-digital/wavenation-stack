@@ -1,0 +1,93 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 3rem;
+  padding: 3rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   ARTICLE
+================================ */
+
+.article {
+  max-width: 720px;
+}
+
+/* Header */
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.category {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--neon-green, #00ff9c);
+}
+
+.title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.85;
+  margin: 0 0 1.25rem;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ===============================
+   CONTENT
+================================ */
+
+.content {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.content p {
+  margin-bottom: 1.4rem;
+}
+
+.content h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.4rem;
+}
+
+.content h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.content a {
+  color: var(--electric-blue, #4da3ff);
+  text-decoration: underline;
+}
+
+.content blockquote {
+  border-left: 4px solid var(--neon-green, #00ff9c);
+  padding-left: 1rem;
+  margin: 2rem 0;
+  opacity: 0.9;
+}

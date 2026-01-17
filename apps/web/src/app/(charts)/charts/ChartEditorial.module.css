@@ -1,0 +1,551 @@
+/* app/chart/ChartEditorial.module.css */
+
+.page {
+  padding-bottom: 5rem;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  background: radial-gradient(
+      1200px 500px at 20% -10%,
+      rgba(0, 170, 255, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 420px at 85% 10%,
+      rgba(168, 85, 247, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #020617 0%,
+      #020617 40%,
+      transparent 100%
+    );
+  padding: 5rem 1.5rem 3.25rem;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(
+    700px 220px at 30% 0%,
+    rgba(255, 255, 255, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.heroTopRow {
+  margin-top: 0.85rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.weekStamp {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.heroMeta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pill {
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.title {
+  font-size: 3.35rem;
+  font-weight: 950;
+  line-height: 1.03;
+  margin: 0.75rem 0 1rem;
+  letter-spacing: -0.03em;
+}
+
+.title span {
+  color: #00aaff;
+  text-shadow: 0 0 28px rgba(0, 170, 255, 0.25);
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.55;
+}
+
+/* ================= ACTIONS ================= */
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.primaryCta {
+  padding: 0.9rem 1.65rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00aaff, #0077cc);
+  color: #000;
+  font-weight: 950;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 170, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 170, 255, 0.35);
+  filter: saturate(1.05);
+}
+
+.secondaryCta {
+  padding: 0.9rem 1.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 850;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondaryCta:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 170, 255, 0.45);
+}
+
+/* ================= EDITOR NOTE ================= */
+
+.editorNote {
+  margin-top: 2.25rem;
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.25rem 1.1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.editorNoteHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.editorNoteBadge {
+  display: inline-block;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(0, 170, 255, 0.14);
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.editorNoteSub {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.editorNoteBody {
+  margin-top: 0.75rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+}
+
+.editorNoteFooter {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.noteStat {
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ================= WEEKLY PREVIEW STRIP ================= */
+
+.previewStrip {
+  position: relative;
+  padding: 3.25rem 1.5rem 3.75rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.previewStrip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+.stripHeader {
+  max-width: 860px;
+}
+
+.stripTitle {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+}
+
+.stripSub {
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ================= PREVIEW GRID ================= */
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ================= PREVIEW CARD (REFINED) ================= */
+
+.previewCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.9rem;
+  padding: 1rem 1.1rem 1.05rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.previewCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 170, 255, 0.35);
+}
+
+/* ================= CARD TOP ================= */
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardLabel {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* ================= ARROW ================= */
+
+.arrow {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.arrowUp {
+  color: #22c55e;
+}
+
+.arrowDown {
+  color: #ef4444;
+}
+
+.arrowFlat {
+  opacity: 0.6;
+}
+
+/* ================= METRIC ================= */
+
+.metricHeading {
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.metricValue {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #38bdf8;
+}
+
+.metricTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+/* ================= TRACK META ================= */
+
+.trackMeta {
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.trackMeta strong {
+  font-weight: 900;
+}
+
+.artist {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ================= CARD MID ================= */
+
+.cardMid {
+  margin-top: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.deltaPill {
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.deltaUp {
+  color: #22c55e;
+}
+
+.deltaDown {
+  color: #ef4444;
+}
+
+.deltaFlat {
+  opacity: 0.65;
+}
+
+/* ================= SPARKLINE ================= */
+
+.sparkWrap {
+  min-width: 110px;
+}
+
+.spark {
+  width: 110px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ================= CARD DESC ================= */
+
+.cardDesc {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ================= SKELETON LOADER ================= */
+
+.skeletonCard {
+  border-radius: 0.9rem;
+  padding: 1rem;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 37%,
+    rgba(255, 255, 255, 0.04) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.skeletonLine {
+  height: 0.7rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  margin-top: 0.5rem;
+}
+
+.skeletonLineShort {
+  width: 60%;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ================= EDITORIAL BLOCKS ================= */
+
+.blocks {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.25rem;
+}
+
+.block {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.15rem;
+  padding: 1.35rem 1.35rem 1.25rem;
+}
+
+.block h3 {
+  font-size: 1.2rem;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.block p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* ================= FOOTER NOTE ================= */
+
+.footerNote {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  padding: 0 1rem;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 860px) {
+  .title {
+    font-size: 2.7rem;
+  }
+
+  .hero {
+    padding: 4.25rem 1.25rem 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
+  .previewStrip {
+    padding: 3rem 1.25rem 3.5rem;
+  }
+
+  .blocks {
+    padding: 0 1.25rem;
+  }
+
+  .cardMid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sparkWrap {
+    justify-content: flex-start;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .previewCard,
+  .primaryCta,
+  .secondaryCta {
+    transition: none !important;
+  }
+
+  .previewCard:hover {
+    transform: none !important;
+  }
+
+  .primaryCta:hover,
+  .secondaryCta:hover {
+    transform: none !important;
+  }
+}
