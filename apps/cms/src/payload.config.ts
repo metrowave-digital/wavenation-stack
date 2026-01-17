@@ -156,10 +156,6 @@ export default buildConfig({
     }),
   ],
 
-  routes: {
-    api: '/api',
-  },
-
   graphQL: {
     disable: true,
     disablePlaygroundInProduction:true,
