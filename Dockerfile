@@ -6,33 +6,36 @@ WORKDIR /app
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-
-# ⛔ HARD DISABLE TURBOPACK (REQUIRED FOR PAYLOAD + NEXT 15)
-ENV NEXT_DISABLE_TURBOPACK=1
-ENV NEXT_TELEMETRY_DISABLED=1
-
 RUN corepack enable
 
 # ----------------------------------------
-# Dependencies
+# Install dependencies (WORKSPACE-AWARE)
 # ----------------------------------------
 FROM base AS deps
+
+# Copy workspace manifests
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
-RUN pnpm install --frozen-lockfile
+
+# 🔑 IMPORTANT: install ONLY cms workspace deps
+RUN pnpm install --filter ./apps/cms... --frozen-lockfile
 
 # ----------------------------------------
 # Build CMS
 # ----------------------------------------
 FROM base AS build
+WORKDIR /app
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN pnpm --filter cms build
+
+# ✅ Now `next` binary exists
+RUN pnpm --filter ./apps/cms... build
 
 # ----------------------------------------
-# Runtime
+# Runtime (standalone)
 # ----------------------------------------
-FROM base AS runner
+FROM node:20-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
