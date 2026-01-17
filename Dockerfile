@@ -6,6 +6,11 @@ WORKDIR /app
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+
+# ⛔ HARD DISABLE TURBOPACK (REQUIRED FOR PAYLOAD + NEXT 15)
+ENV NEXT_DISABLE_TURBOPACK=1
+ENV NEXT_TELEMETRY_DISABLED=1
+
 RUN corepack enable
 
 # ----------------------------------------
