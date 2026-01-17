@@ -9,16 +9,15 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 # ----------------------------------------
-# Dependencies (workspace)
+# Dependencies
 # ----------------------------------------
 FROM base AS deps
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
-COPY packages ./packages
 RUN pnpm install --frozen-lockfile
 
 # ----------------------------------------
-# Build CMS only
+# Build CMS
 # ----------------------------------------
 FROM base AS build
 COPY . .
