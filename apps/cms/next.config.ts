@@ -3,9 +3,14 @@ import type { NextConfig } from 'next'
 import path from 'path'
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
+
   experimental: {
+    // ✅ Correct for Next 15 types
+    turbo: {},
+
     serverActions: {
-      bodySizeLimit: '20mb', // REQUIRED for media uploads
+      bodySizeLimit: '20mb',
     },
   },
 
@@ -14,10 +19,10 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
 
-      // 🔑 REQUIRED: resolve Payload virtual config import
+      // REQUIRED: Payload virtual config
       '@payload-config': path.resolve(
         __dirname,
-        'src/payload.config.ts'
+        'src/payload.config.ts',
       ),
     }
 
