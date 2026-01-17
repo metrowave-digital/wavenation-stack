@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getPayloadClient } from '@/payload/getPayloadClient'
+import { getPayloadClient } from '../../../../../payload/getPayloadClient'
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
