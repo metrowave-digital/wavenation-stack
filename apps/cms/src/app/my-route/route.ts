@@ -1,12 +1,10 @@
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { NextResponse } from 'next/server'
+import { getPayloadClient } from '../../payload/getPayloadClient'
 
-export const GET = async (request: Request) => {
-  const payload = await getPayload({
-    config: configPromise,
-  })
+export async function GET() {
+  const payload = await getPayloadClient()
 
-  return Response.json({
+  return NextResponse.json({
     message: 'This is an example of a custom route.',
   })
 }
