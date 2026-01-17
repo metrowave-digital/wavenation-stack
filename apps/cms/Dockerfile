@@ -10,16 +10,13 @@ RUN corepack enable
 # ======================================================
 FROM base AS deps
 
-# Copy only CMS files (context = apps/cms)
-COPY package.json pnpm-lock.yaml ./
-
-RUN pnpm install --frozen-lockfile
+COPY package.json ./
+RUN pnpm install
 
 # ======================================================
 # Build
 # ======================================================
 FROM deps AS build
-
 COPY . .
 RUN pnpm build
 
@@ -28,7 +25,6 @@ RUN pnpm build
 # ======================================================
 FROM base AS runner
 ENV NODE_ENV=production
-
 WORKDIR /app
 
 COPY --from=build /app ./

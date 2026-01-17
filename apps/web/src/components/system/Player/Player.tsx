@@ -7,6 +7,7 @@ import { PlayerInfo } from './PlayerInfo/PlayerInfo'
 import { PlayerControls } from './PlayerControls/PlayerControls'
 import { PlayerActions } from './PlayerActions/PlayerActions'
 import { PlayerPopup } from './PlayerPopup/PlayerPopup'
+import { PlayerProgress } from './PlayerProgress/PlayerProgress'
 
 export function Player() {
   const [popupOpen, setPopupOpen] = useState(false)
@@ -20,6 +21,7 @@ export function Player() {
       >
         <div className={styles.texture} aria-hidden />
 
+        {/* Top row */}
         <div className={styles.info}>
           <PlayerInfo />
         </div>
@@ -33,6 +35,11 @@ export function Player() {
             placement="sticky_player"
             onExpand={() => setPopupOpen(true)}
           />
+        </div>
+
+        {/* Bottom progress row */}
+        <div className={styles.progress}>
+          <PlayerProgress />
         </div>
       </div>
 
