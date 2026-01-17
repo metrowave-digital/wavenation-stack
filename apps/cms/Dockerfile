@@ -6,20 +6,13 @@ WORKDIR /app
 RUN corepack enable
 
 # ======================================================
-# Dependencies (monorepo-aware)
+# Dependencies
 # ======================================================
 FROM base AS deps
 
-# Copy root workspace files
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+# Copy only CMS files (context = apps/cms)
+COPY package.json pnpm-lock.yaml ./
 
-# Copy CMS package.json
-COPY apps/cms/package.json apps/cms/package.json
-
-# Copy shared packages (ONLY if CMS depends on them)
-COPY packages packages
-
-# Install dependencies
 RUN pnpm install --frozen-lockfile
 
 # ======================================================
@@ -27,11 +20,8 @@ RUN pnpm install --frozen-lockfile
 # ======================================================
 FROM deps AS build
 
-# Copy full repo
 COPY . .
-
-# Build ONLY the CMS
-RUN pnpm --filter ./apps/cms... build
+RUN pnpm build
 
 # ======================================================
 # Runtime
@@ -41,13 +31,7 @@ ENV NODE_ENV=production
 
 WORKDIR /app
 
-# Copy built app + node_modules
 COPY --from=build /app ./
 
-# Move into CMS app
-WORKDIR /app/apps/cms
-
-# Render injects PORT automatically
 EXPOSE 3000
-
 CMD ["pnpm", "start"]
