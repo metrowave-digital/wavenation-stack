@@ -1,10 +1,11 @@
 {
   "name": "@wavenation/cms",
   "version": "1.0.0",
-  "description": "WaveNation CMS powered by Payload 3 and Next.js",
-  "license": "MIT",
   "private": true,
   "type": "module",
+  "description": "WaveNation CMS powered by Payload 3 and Next.js",
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.0",
 
   "scripts": {
     "build": "NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
@@ -17,9 +18,9 @@
     "generate:types": "NODE_OPTIONS=--no-deprecation payload generate:types",
     "generate:importmap": "NODE_OPTIONS=--no-deprecation payload generate:importmap",
 
-    "test": "pnpm run test:int && pnpm run test:e2e",
     "test:int": "NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
-    "test:e2e": "NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" playwright test"
+    "test:e2e": "NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" playwright test",
+    "test": "pnpm run test:int && pnpm run test:e2e"
   },
 
   "dependencies": {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "WaveNation monorepo (web + CMS)",
+  "packageManager": "pnpm@10.28.0",
 
   "scripts": {
     "build:web": "pnpm --filter ./apps/web... build",
