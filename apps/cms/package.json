@@ -7,11 +7,11 @@
   "type": "module",
 
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "build": "NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
+"dev": "NODE_OPTIONS=--no-deprecation next dev",
+"devsafe": "rm -rf .next && NODE_OPTIONS=--no-deprecation next dev",
+"start": "NODE_OPTIONS=--no-deprecation next start",
+"lint": "NODE_OPTIONS=--no-deprecation next lint",
 
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
