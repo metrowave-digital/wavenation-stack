@@ -29,7 +29,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 COPY --from=deps /app/node_modules ./node_modules
 
-RUN pnpm --filter @wavenation/cms run build
+WORKDIR /app/apps/cms
+RUN pnpm run build
 
 # ----------------------------------------
 # Runtime
