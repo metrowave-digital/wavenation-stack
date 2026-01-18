@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { headers as getHeaders } from 'next/headers'
 import Image from 'next/image'
 import React from 'react'
