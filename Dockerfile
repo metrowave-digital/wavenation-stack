@@ -6,6 +6,7 @@ WORKDIR /app
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV PNPM_ENABLE_PREPARE_SCRIPTS=true
 
 RUN corepack enable
 
@@ -18,7 +19,8 @@ ENV NODE_ENV=development
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 
-RUN pnpm install --frozen-lockfile
+# 🔑 APPROVE ALL BUILD SCRIPTS (CI-safe)
+RUN pnpm install --frozen-lockfile --unsafe-perm
 
 # ----------------------------------------
 # Build CMS
@@ -30,8 +32,7 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 COPY --from=deps /app/node_modules ./node_modules
 
-# 🔑 pnpm-native build (isolated linker)
-RUN pnpm --filter @wavenation/cms... run build
+RUN pnpm --filter @wavenation/cms... exec next build
 
 # ----------------------------------------
 # Runtime
