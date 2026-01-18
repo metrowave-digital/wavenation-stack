@@ -11,8 +11,10 @@
   "scripts": {
     "build:web": "pnpm --filter ./apps/web... build",
     "dev:web": "pnpm --filter ./apps/web... dev",
+
     "build:cms": "pnpm --filter ./apps/cms... build",
     "dev:cms": "pnpm --filter ./apps/cms... dev",
+
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint"
   },
@@ -28,8 +30,8 @@
 
   "pnpm": {
     "overrides": {
-      "react": "18.2.0",
-      "react-dom": "18.2.0",
+      "react": "19.0.0",
+      "react-dom": "19.0.0",
       "next": "14.2.25"
     }
   },
