@@ -11,9 +11,9 @@ export default function Error({
 }) {
   return (
     <div style={{ padding: 32 }}>
-      <h1>Something went wrong</h1>
+      <h1>Application Error</h1>
       <p>{error.message}</p>
-      <button onClick={() => reset()}>Try again</button>
+      <button onClick={() => reset()}>Retry</button>
     </div>
   )
 }
