@@ -7,24 +7,36 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+
 RUN corepack enable
 
 # ----------------------------------------
 # Dependencies
 # ----------------------------------------
 FROM base AS deps
+
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
+COPY packages ./packages
+
 RUN pnpm install --frozen-lockfile
 
 # ----------------------------------------
 # Build CMS
 # ----------------------------------------
 FROM base AS build
-COPY . .
+
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY apps ./apps
+COPY packages ./packages
 COPY --from=deps /app/node_modules ./node_modules
+
 WORKDIR /app/apps/cms
-RUN pnpm build
+
+# sanity check (optional, but recommended once)
+RUN node -e "require('next/package.json')"
+
+RUN pnpm run build
 
 # ----------------------------------------
 # Runtime
