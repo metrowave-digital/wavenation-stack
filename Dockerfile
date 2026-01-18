@@ -1,33 +1,32 @@
 # ----------------------------------------
 # Base
 # ----------------------------------------
-FROM node:20-slim AS base
+FROM node:20-alpine AS base
 WORKDIR /app
-
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 # ----------------------------------------
-# Install CMS dependencies (LOCAL)
+# Dependencies (CMS ONLY)
 # ----------------------------------------
 FROM base AS deps
 
+# Copy workspace files
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-COPY apps/cms ./apps/cms
+COPY apps/cms/package.json ./apps/cms/package.json
 
-WORKDIR /app/apps/cms
-
-# 🔑 This creates apps/cms/node_modules (required)
-RUN pnpm install --frozen-lockfile
+# ⬇️ THIS IS THE CRITICAL LINE ⬇️
+RUN pnpm install --filter ./apps/cms... --frozen-lockfile
 
 # ----------------------------------------
-# Build CMS
+# Build
 # ----------------------------------------
 FROM base AS build
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/apps/cms/node_modules ./apps/cms/node_modules
 
 COPY . .
-COPY --from=deps /app/apps/cms/node_modules ./apps/cms/node_modules
 
 WORKDIR /app/apps/cms
 
@@ -36,14 +35,10 @@ RUN pnpm build
 # ----------------------------------------
 # Runtime
 # ----------------------------------------
-FROM node:20-slim AS runner
+FROM node:20-alpine AS runtime
 WORKDIR /app
-ENV NODE_ENV=production
 
-COPY --from=build /app/apps/cms/.next/standalone ./
-COPY --from=build /app/apps/cms/.next/static ./apps/cms/.next/static
-COPY --from=build /app/apps/cms/public ./apps/cms/public
-COPY package.json ./
+COPY --from=build /app/apps/cms ./
 
 EXPOSE 3000
 CMD ["node", "server.js"]
