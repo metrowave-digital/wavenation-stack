@@ -1,11 +1,10 @@
 {
   "name": "@wavenation/cms",
   "version": "1.0.0",
-  "private": true,
-  "type": "module",
   "description": "WaveNation CMS powered by Payload 3 and Next.js",
   "license": "MIT",
-  "packageManager": "pnpm@10.28.0",
+  "private": true,
+  "type": "module",
 
   "scripts": {
     "build": "NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
@@ -18,15 +17,15 @@
     "generate:types": "NODE_OPTIONS=--no-deprecation payload generate:types",
     "generate:importmap": "NODE_OPTIONS=--no-deprecation payload generate:importmap",
 
+    "test": "pnpm run test:int && pnpm run test:e2e",
     "test:int": "NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
-    "test:e2e": "NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" playwright test",
-    "test": "pnpm run test:int && pnpm run test:e2e"
+    "test:e2e": "NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" playwright test"
   },
 
   "dependencies": {
     "next": "14.2.25",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
 
     "payload": "3.69.0",
     "@payloadcms/next": "3.69.0",
@@ -42,8 +41,8 @@
 
   "devDependencies": {
     "@types/node": "^22.5.4",
-    "@types/react": "18.2.79",
-    "@types/react-dom": "18.2.25",
+    "@types/react": "19.2.1",
+    "@types/react-dom": "19.2.1",
 
     "typescript": "5.7.3",
     "eslint": "^9.16.0",
