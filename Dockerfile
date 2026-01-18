@@ -9,21 +9,28 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 # ----------------------------------------
-# Dependencies
+# Install CMS dependencies (LOCAL)
 # ----------------------------------------
 FROM base AS deps
+
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-COPY apps ./apps
-RUN pnpm install --filter ./apps/cms... --frozen-lockfile
+COPY apps/cms ./apps/cms
+
+WORKDIR /app/apps/cms
+
+# 🔑 This creates apps/cms/node_modules (required)
+RUN pnpm install --frozen-lockfile
 
 # ----------------------------------------
 # Build CMS
 # ----------------------------------------
 FROM base AS build
+
 COPY . .
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/apps/cms/node_modules ./apps/cms/node_modules
 
 WORKDIR /app/apps/cms
+
 RUN pnpm build
 
 # ----------------------------------------
