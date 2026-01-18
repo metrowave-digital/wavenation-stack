@@ -1,11 +1,14 @@
+import path from 'path'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
   output: 'standalone',
 
   experimental: {
-    serverActions: true,
+    serverActions: {
+      bodySizeLimit: '20mb', // REQUIRED for uploads
+    },
   },
 
   images: {
@@ -18,12 +21,20 @@ const nextConfig = {
   },
 
   webpack(config) {
-    // Payload requires this for server bundles
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@payload-config': path.resolve(
+        process.cwd(),
+        'src/payload.config.ts'
+      ),
+    }
+
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
       path: false,
     }
+
     return config
   },
 }
