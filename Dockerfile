@@ -4,33 +4,38 @@
 FROM node:20-slim AS base
 WORKDIR /app
 
-ENV NODE_ENV=production
 ENV PNPM_HOME="/pnpm"
 ENV PATH="/app/node_modules/.bin:$PNPM_HOME:$PATH"
 
 RUN corepack enable
 
 # ----------------------------------------
-# Dependencies
+# Dependencies (install as "dev" for build)
 # ----------------------------------------
 FROM base AS deps
+ENV NODE_ENV=development
 
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 
+# Install workspace deps (including apps/cms)
 RUN pnpm install --frozen-lockfile
+
+# Debug: prove Next is installed at root
+RUN ls -la /app/node_modules/.bin | grep next
 
 # ----------------------------------------
 # Build CMS
 # ----------------------------------------
 FROM base AS build
+ENV NODE_ENV=development
 
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 COPY --from=deps /app/node_modules ./node_modules
 
-# 🔑 RUN BUILD FROM ROOT, FILTERED
-RUN pnpm --filter @wavenation/cms run build
+# Build from workspace root with filter
+RUN pnpm --filter @wavenation/cms... run build
 
 # ----------------------------------------
 # Runtime
