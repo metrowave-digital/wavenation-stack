@@ -9,31 +9,25 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 # ----------------------------------------
-# Install dependencies (WORKSPACE-AWARE)
+# Dependencies
 # ----------------------------------------
 FROM base AS deps
-
-# Copy workspace manifests
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
-
-# 🔑 IMPORTANT: install ONLY cms workspace deps
 RUN pnpm install --filter ./apps/cms... --frozen-lockfile
 
 # ----------------------------------------
 # Build CMS
 # ----------------------------------------
 FROM base AS build
-WORKDIR /app
-
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
-# ✅ Now `next` binary exists
-RUN pnpm --filter ./apps/cms... build
+WORKDIR /app/apps/cms
+RUN pnpm build
 
 # ----------------------------------------
-# Runtime (standalone)
+# Runtime
 # ----------------------------------------
 FROM node:20-slim AS runner
 WORKDIR /app
