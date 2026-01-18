@@ -10,7 +10,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 # ----------------------------------------
-# Install dependencies
+# Dependencies
 # ----------------------------------------
 FROM base AS deps
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
@@ -33,7 +33,6 @@ FROM node:20-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Copy standalone output
 COPY --from=build /app/apps/cms/.next/standalone ./
 COPY --from=build /app/apps/cms/.next/static ./.next/static
 COPY --from=build /app/apps/cms/public ./public
