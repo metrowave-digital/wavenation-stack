@@ -1,9 +1,3 @@
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
-
-export const runtime = 'nodejs'
-export const dynamic = 'force-dynamic'
-
 import React from 'react'
 import config from '@payload-config'
 import '@payloadcms/next/css'
@@ -26,7 +20,7 @@ const serverFunction: ServerFunctionClient = async (args) => {
   })
 }
 
-export default async function Layout({ children }: Props) {
+export default async function PayloadLayout({ children }: Props) {
   return (
     <RootLayout
       config={config}
