@@ -4,9 +4,6 @@
 FROM node:20-slim AS base
 WORKDIR /app
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-
 RUN corepack enable
 
 # ----------------------------------------
@@ -15,6 +12,7 @@ RUN corepack enable
 FROM base AS deps
 ENV NODE_ENV=development
 
+COPY .npmrc ./
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 
@@ -26,6 +24,7 @@ RUN pnpm install --frozen-lockfile
 FROM base AS build
 ENV NODE_ENV=development
 
+COPY .npmrc ./
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 COPY --from=deps /app/node_modules ./node_modules

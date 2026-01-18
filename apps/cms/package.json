@@ -7,20 +7,20 @@
   "type": "module",
 
   "scripts": {
-    "dev": "NODE_OPTIONS=--no-deprecation pnpm exec next dev",
-    "devsafe": "rm -rf .next && NODE_OPTIONS=--no-deprecation pnpm exec next dev",
+    "dev": "NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && NODE_OPTIONS=--no-deprecation next dev",
 
-    "build": "NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" pnpm exec next build",
-    "start": "NODE_OPTIONS=--no-deprecation pnpm exec next start",
-    "lint": "NODE_OPTIONS=--no-deprecation pnpm exec next lint",
+    "build": "NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
+    "start": "NODE_OPTIONS=--no-deprecation next start",
+    "lint": "NODE_OPTIONS=--no-deprecation next lint",
 
-    "payload": "NODE_OPTIONS=--no-deprecation pnpm exec payload",
-    "generate:types": "NODE_OPTIONS=--no-deprecation pnpm exec payload generate:types",
-    "generate:importmap": "NODE_OPTIONS=--no-deprecation pnpm exec payload generate:importmap",
+    "payload": "NODE_OPTIONS=--no-deprecation payload",
+    "generate:types": "NODE_OPTIONS=--no-deprecation payload generate:types",
+    "generate:importmap": "NODE_OPTIONS=--no-deprecation payload generate:importmap",
 
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:int": "NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
-    "test:e2e": "NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" pnpm exec playwright test"
+    "test:e2e": "NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" playwright test"
   },
 
   "dependencies": {
@@ -62,7 +62,7 @@
   },
 
   "engines": {
-    "node": ">=18.20.2 || >=20.9.0",
-    "pnpm": ">=9 || >=10"
+    "node": ">=20 <23",
+    "pnpm": ">=9"
   }
 }
