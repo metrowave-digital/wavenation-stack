@@ -11,7 +11,7 @@
     "devsafe": "rm -rf .next && NODE_OPTIONS=--no-deprecation next dev",
 
     "build": "NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
-    "start": "NODE_OPTIONS=--no-deprecation next start",
+    "start": "node server.js",
     "lint": "NODE_OPTIONS=--no-deprecation next lint",
 
     "payload": "NODE_OPTIONS=--no-deprecation payload",
