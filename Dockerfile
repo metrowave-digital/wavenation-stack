@@ -18,7 +18,8 @@ FROM base AS deps
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 
-RUN pnpm install --frozen-lockfile
+# 🔑 CRITICAL: install CMS workspace explicitly
+RUN pnpm install --frozen-lockfile --filter @wavenation/cms...
 
 # ----------------------------------------
 # Build CMS
@@ -30,6 +31,9 @@ COPY apps ./apps
 COPY --from=deps /app/node_modules ./node_modules
 
 WORKDIR /app/apps/cms
+
+# sanity check (optional but useful once)
+RUN ls -la node_modules/.bin | grep next
 
 RUN pnpm run build
 
