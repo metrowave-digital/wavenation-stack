@@ -6,7 +6,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="/app/node_modules/.bin:$PNPM_HOME:$PATH"
 
 RUN corepack enable
 
@@ -18,8 +18,7 @@ FROM base AS deps
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 
-# 🔑 CRITICAL: install CMS workspace explicitly
-RUN pnpm install --frozen-lockfile --filter @wavenation/cms...
+RUN pnpm install --frozen-lockfile
 
 # ----------------------------------------
 # Build CMS
@@ -30,12 +29,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
 COPY --from=deps /app/node_modules ./node_modules
 
-WORKDIR /app/apps/cms
-
-# sanity check (optional but useful once)
-RUN ls -la node_modules/.bin | grep next
-
-RUN pnpm run build
+# 🔑 RUN BUILD FROM ROOT, FILTERED
+RUN pnpm --filter @wavenation/cms run build
 
 # ----------------------------------------
 # Runtime
