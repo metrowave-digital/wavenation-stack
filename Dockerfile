@@ -17,7 +17,6 @@ FROM base AS deps
 
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
-COPY packages ./packages
 
 RUN pnpm install --frozen-lockfile
 
@@ -28,13 +27,9 @@ FROM base AS build
 
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 COPY apps ./apps
-COPY packages ./packages
 COPY --from=deps /app/node_modules ./node_modules
 
 WORKDIR /app/apps/cms
-
-# sanity check (optional, but recommended once)
-RUN node -e "require('next/package.json')"
 
 RUN pnpm run build
 
